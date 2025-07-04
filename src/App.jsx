@@ -27,7 +27,6 @@ function App() {
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <Navbar watchLaterCount={watchLaterList.length} />
-
         <div className="flex-grow">
           <Routes>
             <Route
@@ -54,7 +53,6 @@ function App() {
             />
           </Routes>
         </div>
-
         <footer className="bg-gray-100 text-center text-gray-500 py-3">
           © 2025 Shreeram Jadhav
         </footer>
