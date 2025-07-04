@@ -1,6 +1,6 @@
 # YouTube Clone (Frontend Only)
 
-This is a simple YouTube-inspired video browsing app built using React and Tailwind CSS. It was developed as part of a frontend development assignment, and includes core features like a video feed, like button, and watch later list. There is no backend — everything runs in the browser using sessionStorage.
+This is a simple YouTube-inspired video browsing app built using React and Tailwind CSS. It includes core features like a video feed, like button, and watch later list. There is no backend — everything runs in the browser using sessionStorage.
 
 ## Features
 
