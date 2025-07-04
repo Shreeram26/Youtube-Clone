@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
-const VideoCard = ({ video, watchLaterList, setWatchLaterList }) => {
-  const [liked, setLiked] = useState(false);
+const VideoCard = ({
+  video,
+  watchLaterList,
+  setWatchLaterList,
+  likedVideos,
+  setLikedVideos,
+}) => {
   const isInWatchLater = watchLaterList.some((v) => v.id === video.id);
+  const isLiked = likedVideos.includes(video.id);
 
   const toggleLike = () => {
-    setLiked((prev) => !prev);
+    if (isLiked) {
+      setLikedVideos(likedVideos.filter((id) => id !== video.id));
+    } else {
+      setLikedVideos([...likedVideos, video.id]);
+    }
   };
 
   const toggleWatchLater = () => {
@@ -25,17 +35,21 @@ const VideoCard = ({ video, watchLaterList, setWatchLaterList }) => {
       />
       <h3 className="text-lg font-semibold">{video.title}</h3>
       <p className="text-sm text-gray-600">{video.channel}</p>
-      <p className="text-xs text-gray-500">{video.views} • {video.time}</p>
+      <p className="text-xs text-gray-500">
+        {video.views} • {video.time}
+      </p>
       <div className="flex justify-between mt-2">
         <button
           onClick={toggleLike}
-          className={liked ? "text-red-500 font-bold" : "text-gray-500"}
+          className={isLiked ? "text-red-500 font-bold" : "text-gray-500"}
         >
-          {liked ? "👍 Liked" : "👍 Like"}
+          {isLiked ? "👍 Liked" : "👍 Like"}
         </button>
         <button
           onClick={toggleWatchLater}
-          className={isInWatchLater ? "text-blue-600 font-bold" : "text-gray-500"}
+          className={
+            isInWatchLater ? "text-blue-600 font-bold" : "text-gray-500"
+          }
         >
           {isInWatchLater ? "⏳ Queued" : "➕ Watch Later"}
         </button>

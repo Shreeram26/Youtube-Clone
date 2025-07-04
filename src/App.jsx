@@ -14,6 +14,15 @@ function App() {
     sessionStorage.setItem("watchLater", JSON.stringify(watchLaterList));
   }, [watchLaterList]);
 
+  const [likedVideos, setLikedVideos] = useState(() => {
+    const saved = sessionStorage.getItem("likedVideos");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem("likedVideos", JSON.stringify(likedVideos));
+  }, [likedVideos]);
+
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
@@ -27,6 +36,8 @@ function App() {
                 <Home
                   watchLaterList={watchLaterList}
                   setWatchLaterList={setWatchLaterList}
+                  likedVideos={likedVideos}
+                  setLikedVideos={setLikedVideos}
                 />
               }
             />
@@ -36,6 +47,8 @@ function App() {
                 <WatchLater
                   watchLaterList={watchLaterList}
                   setWatchLaterList={setWatchLaterList}
+                  likedVideos={likedVideos}
+                  setLikedVideos={setLikedVideos}
                 />
               }
             />
